@@ -1,27 +1,45 @@
 {
-  "name": "electron-fcm-push-receiver",
+  "name": "@hieuht/electron-fcm-push-receiver",
   "version": "2.1.7",
   "description": "A module to receive FCM notifications in electron",
   "main": "src/index.js",
-  "repository": "https://github.com/ibrahim-ih/electron-fcm-push-receiver",
-  "author": "ibrahim-ih",
+  "repository": "https://github.com/hieu-ht/electron-fcm-push-receiver",
+  "author": "hieuht",
   "license": "MIT",
   "types": "src/electron-fcm-push-receiver.d.ts",
+  "scripts": {
+    "lint": "eslint --ext .ts,.js . --fix",
+    "prettier:format": "prettier --write \"**/*.{ts,js,json,md}\"",
+    "prettier:check": "prettier --check \"**/*.{ts,js,json,md}\"",
+    "pre-commit": "lint-staged",
+    "huskyinstall": "husky install"
+  },
   "dependencies": {
-    "electron-config": "^1.0.0",
-    "push-receiver": "^2.0.2"
+    "@hieuht/push-receiver": "https://github.com/hieu-ht/push-receiver.git#5bed439068e794a3488a011e130291c6c900263d",
+    "electron-store": "^8.1.0"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "2.7.0",
-    "eslint-plugin-jsx-a11y": "6.0.2",
-    "eslint-plugin-react": "7.4.0",
-    "prettier": "^1.14.3",
-    "prettier-eslint": "^8.8.2",
-    "prettier-eslint-cli": "^4.7.1"
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "eslint": "8.22.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "peerDepencies": {
-    "electron": "^1.8.1"
+    "electron": "^18.3.0"
+  },
+  "engines": {
+    "node": ">=14"
   }
 }
