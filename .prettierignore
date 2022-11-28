@@ -1,0 +1,14 @@
+/node_modules/**
+/dist/**
+dist_electron
+/dist_electron/**
+/public/js/**
+build
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+/.husky/**
+.idea
+.idea/*
+.vscode
+.vscode/

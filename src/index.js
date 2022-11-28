@@ -1,25 +1,19 @@
-const { register, listen } = require('push-receiver');
-const { ipcMain } = require('electron');
-const Config = require('electron-config');
-const {
+import PushReceiver from "@hieuht/push-receiver";
+import { ipcMain } from "electron";
+import Store from "electron-store";
+import {
   START_NOTIFICATION_SERVICE,
   NOTIFICATION_SERVICE_STARTED,
   NOTIFICATION_SERVICE_ERROR,
   NOTIFICATION_RECEIVED,
   TOKEN_UPDATED,
-} = require('./constants');
+} from "./constants";
 
-const config = new Config();
+const store = new Store();
 
-module.exports = {
-  START_NOTIFICATION_SERVICE,
-  NOTIFICATION_SERVICE_STARTED,
-  NOTIFICATION_SERVICE_ERROR,
-  NOTIFICATION_RECEIVED,
-  TOKEN_UPDATED,
-  setup,
-  reset,
-};
+let receiver;
+let stopListeningToCredentials;
+let stopListeningToNotifications;
 
 // To be sure that start is called only once
 let started = false;
@@ -29,55 +23,83 @@ function setup(webContents) {
   // Will be called by the renderer process
   ipcMain.on(START_NOTIFICATION_SERVICE, async (_, senderId) => {
     // Retrieve saved credentials
-    let credentials = config.get('credentials');
+    let credentials = store.get("credentials");
     // Retrieve saved senderId
-    const savedSenderId = config.get('senderId');
+    const savedSenderId = store.get("senderId");
     if (started) {
       webContents.send(NOTIFICATION_SERVICE_STARTED, ((credentials && credentials.fcm) || {}).token);
       return;
     }
-    started = true;
+
     try {
       // Retrieve saved persistentId : avoid receiving all already received notifications on start
-      const persistentIds = config.get('persistentIds') || [];
+      const persistentIds = store.get("persistentIds") || [];
       // Register if no credentials or if senderId has changed
+
       if (!credentials || savedSenderId !== senderId) {
-        credentials = await register(senderId);
-        // Save credentials for later use
-        config.set('credentials', credentials);
+        receiver = new PushReceiver({
+          senderId: senderId,
+          persistentIds, // Recover stored ids of all previous notifications
+        });
+
+        stopListeningToCredentials = receiver.onCredentialsChanged(({ oldCredentials, newCredentials }) => {
+          // Save credentials for later use
+          store.set("credentials", newCredentials);
+
+          // Notify the renderer process that the FCM token has changed
+          webContents.send(TOKEN_UPDATED, newCredentials.fcm.token);
+        });
+
+        stopListeningToNotifications = receiver.onNotification((notification) => {
+          // Do something with the notification
+          // Notify the renderer process that a new notification has been received
+          // And check if window is not destroyed for darwin Apps
+          if (!webContents.isDestroyed()) {
+            webContents.send(NOTIFICATION_RECEIVED, notification);
+          }
+        });
+
+        await receiver.connect();
+
         // Save senderId
-        config.set('senderId', senderId);
-        // Notify the renderer process that the FCM token has changed
-        webContents.send(TOKEN_UPDATED, credentials.fcm.token);
+        store.set("senderId", senderId);
+
+        started = true;
       }
-      // Listen for GCM/FCM notifications
-      await listen(Object.assign({}, credentials, { persistentIds }), onNotification(webContents));
-      // Notify the renderer process that we are listening for notifications
-      webContents.send(NOTIFICATION_SERVICE_STARTED, credentials.fcm.token);
     } catch (e) {
-      console.error('PUSH_RECEIVER:::Error while starting the service', e);
+      console.error("PUSH_RECEIVER:::Error while starting the service", e);
       // Forward error to the renderer process
       webContents.send(NOTIFICATION_SERVICE_ERROR, e.message);
     }
   });
 }
+
 // Called in the disconnect
 function reset() {
-  config.set('credentials', null);
-  config.set('senderId', null);
-  config.set('persistentIds', null);
+  store.set("credentials", null);
+  store.set("senderId", null);
+  store.set("persistentIds", null);
   started = false;
+
+  if (stopListeningToCredentials) {
+    stopListeningToCredentials();
+  }
+
+  if (stopListeningToNotifications) {
+    stopListeningToNotifications();
+  }
+
+  if (receiver) {
+    receiver.destroy();
+  }
 }
-// Will be called on new notification
-function onNotification(webContents) {
-  return ({ notification, persistentId }) => {
-    const persistentIds = config.get('persistentIds') || [];
-    // Update persistentId
-    config.set('persistentIds', [...persistentIds, persistentId]);
-    // Notify the renderer process that a new notification has been received
-    // And check if window is not destroyed for darwin Apps
-    if(!webContents.isDestroyed()){
-      webContents.send(NOTIFICATION_RECEIVED, notification);
-    }
-  };
-}
+
+export {
+  START_NOTIFICATION_SERVICE,
+  NOTIFICATION_SERVICE_STARTED,
+  NOTIFICATION_SERVICE_ERROR,
+  NOTIFICATION_RECEIVED,
+  TOKEN_UPDATED,
+  setup,
+  reset,
+};

@@ -1,11 +1,12 @@
-{
-  "extends": "airbnb",
-  "env": {
-    "browser": true,
-    "node": true,
-    "es6": true
+module.exports = {
+  root: true,
+  env: {
+    browser: true,
+    node: true,
   },
-  "rules": {
+  parser: "@typescript-eslint/parser",
+  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
+  rules: {
     "import/no-extraneous-dependencies": 0,
     "import/extensions": 0,
     "import/no-unresolved": 0,
@@ -16,5 +17,8 @@
     "react/require-default-props": 0,
     "react/no-array-index-key": 0,
     "no-console": 0,
-  }
-}
+    curly: "error",
+    eqeqeq: ["error", "always"],
+  },
+  overrides: [],
+};
