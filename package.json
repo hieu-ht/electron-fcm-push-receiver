@@ -15,7 +15,7 @@
     "huskyinstall": "husky install"
   },
   "dependencies": {
-    "@hieuht/push-receiver": "https://github.com/hieu-ht/push-receiver.git#b7f1d36b134f343947f1153d9637c17560212e85",
+    "@hieuht/push-receiver": "https://github.com/hieu-ht/push-receiver.git#ab57abd24bd5c54656915fcff4481d36b76f37ad",
     "electron-store": "^8.1.0"
   },
   "devDependencies": {

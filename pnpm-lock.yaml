@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^17.1.2
   '@commitlint/config-conventional': ^17.1.0
-  '@hieuht/push-receiver': https://github.com/hieu-ht/push-receiver.git#b7f1d36b134f343947f1153d9637c17560212e85
+  '@hieuht/push-receiver': https://github.com/hieu-ht/push-receiver.git#ab57abd24bd5c54656915fcff4481d36b76f37ad
   '@typescript-eslint/eslint-plugin': ^5.38.0
   '@typescript-eslint/parser': ^5.38.0
   electron-store: ^8.1.0
@@ -15,7 +15,7 @@ specifiers:
   prettier: ^2.7.1
 
 dependencies:
-  '@hieuht/push-receiver': github.com/hieu-ht/push-receiver/b7f1d36b134f343947f1153d9637c17560212e85
+  '@hieuht/push-receiver': github.com/hieu-ht/push-receiver/ab57abd24bd5c54656915fcff4481d36b76f37ad
   electron-store: 8.1.0
 
 devDependencies:
@@ -2632,8 +2632,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  github.com/hieu-ht/push-receiver/b7f1d36b134f343947f1153d9637c17560212e85:
-    resolution: {tarball: https://codeload.github.com/hieu-ht/push-receiver/tar.gz/b7f1d36b134f343947f1153d9637c17560212e85}
+  github.com/hieu-ht/push-receiver/ab57abd24bd5c54656915fcff4481d36b76f37ad:
+    resolution: {tarball: https://codeload.github.com/hieu-ht/push-receiver/tar.gz/ab57abd24bd5c54656915fcff4481d36b76f37ad}
     name: '@hieuht/push-receiver'
     version: 3.1.2
     engines: {node: '>=14'}
