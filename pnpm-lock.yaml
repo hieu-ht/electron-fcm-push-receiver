@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^17.1.2
   '@commitlint/config-conventional': ^17.1.0
-  '@hieuht/push-receiver': https://github.com/hieu-ht/push-receiver.git#ab57abd24bd5c54656915fcff4481d36b76f37ad
+  '@hieuht/push-receiver': https://github.com/hieu-ht/push-receiver.git#637393e46344b091f19108bbf02758cc58666765
   '@typescript-eslint/eslint-plugin': ^5.38.0
   '@typescript-eslint/parser': ^5.38.0
   electron-store: ^8.1.0
@@ -11,11 +11,11 @@ specifiers:
   eslint-config-prettier: ^8.5.0
   eslint-plugin-prettier: ^4.2.1
   husky: ^8.0.1
-  lint-staged: ^13.0.3
+  lint-staged: ^13.1.0
   prettier: ^2.7.1
 
 dependencies:
-  '@hieuht/push-receiver': github.com/hieu-ht/push-receiver/ab57abd24bd5c54656915fcff4481d36b76f37ad
+  '@hieuht/push-receiver': github.com/hieu-ht/push-receiver/637393e46344b091f19108bbf02758cc58666765
   electron-store: 8.1.0
 
 devDependencies:
@@ -27,7 +27,7 @@ devDependencies:
   eslint-config-prettier: 8.5.0_eslint@8.22.0
   eslint-plugin-prettier: 4.2.1_z53js5cag5ouanet725hz7jh3u
   husky: 8.0.2
-  lint-staged: 13.0.4
+  lint-staged: 13.1.0
   prettier: 2.8.0
 
 packages:
@@ -1615,8 +1615,8 @@ packages:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
 
-  /lint-staged/13.0.4:
-    resolution: {integrity: sha512-HxlHCXoYRsq9QCby5wFozmZW00hMs/9e3l+/dz6Qr8Kle4UH0kJTdABAbqhzG+3pcG6QjL9kz7NgGBfph+a5dw==}
+  /lint-staged/13.1.0:
+    resolution: {integrity: sha512-pn/sR8IrcF/T0vpWLilih8jmVouMlxqXxKuAojmbiGX5n/gDnz+abdPptlj0vYnbfE0SQNl3CY/HwtM0+yfOVQ==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
@@ -2632,8 +2632,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  github.com/hieu-ht/push-receiver/ab57abd24bd5c54656915fcff4481d36b76f37ad:
-    resolution: {tarball: https://codeload.github.com/hieu-ht/push-receiver/tar.gz/ab57abd24bd5c54656915fcff4481d36b76f37ad}
+  github.com/hieu-ht/push-receiver/637393e46344b091f19108bbf02758cc58666765:
+    resolution: {tarball: https://codeload.github.com/hieu-ht/push-receiver/tar.gz/637393e46344b091f19108bbf02758cc58666765}
     name: '@hieuht/push-receiver'
     version: 3.1.2
     engines: {node: '>=14'}

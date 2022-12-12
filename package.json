@@ -15,7 +15,7 @@
     "huskyinstall": "husky install"
   },
   "dependencies": {
-    "@hieuht/push-receiver": "https://github.com/hieu-ht/push-receiver.git#ab57abd24bd5c54656915fcff4481d36b76f37ad",
+    "@hieuht/push-receiver": "https://github.com/hieu-ht/push-receiver.git#637393e46344b091f19108bbf02758cc58666765",
     "electron-store": "^8.1.0"
   },
   "devDependencies": {
@@ -27,7 +27,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
+    "lint-staged": "^13.1.0",
     "prettier": "^2.7.1"
   },
   "husky": {
