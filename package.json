@@ -1,10 +1,10 @@
 {
-  "name": "@hieuht/electron-fcm-push-receiver",
-  "version": "2.1.7",
+  "name": "@hieudevx/electron-fcm-push-receiver",
+  "version": "2.1.8",
   "description": "A module to receive FCM notifications in electron",
   "main": "src/index.js",
   "repository": "https://github.com/hieu-ht/electron-fcm-push-receiver",
-  "author": "hieuht",
+  "author": "hieudevx",
   "license": "MIT",
   "types": "src/electron-fcm-push-receiver.d.ts",
   "scripts": {
@@ -15,7 +15,7 @@
     "huskyinstall": "husky install"
   },
   "dependencies": {
-    "@hieuht/push-receiver": "https://github.com/hieu-ht/push-receiver.git#637393e46344b091f19108bbf02758cc58666765",
+    "@hieudevx/push-receiver": "^3.1.4",
     "electron-store": "^8.1.0"
   },
   "devDependencies": {

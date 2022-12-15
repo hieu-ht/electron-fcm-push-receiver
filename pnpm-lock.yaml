@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^17.1.2
   '@commitlint/config-conventional': ^17.1.0
-  '@hieuht/push-receiver': https://github.com/hieu-ht/push-receiver.git#637393e46344b091f19108bbf02758cc58666765
+  '@hieudevx/push-receiver': ^3.1.4
   '@typescript-eslint/eslint-plugin': ^5.38.0
   '@typescript-eslint/parser': ^5.38.0
   electron-store: ^8.1.0
@@ -15,7 +15,7 @@ specifiers:
   prettier: ^2.7.1
 
 dependencies:
-  '@hieuht/push-receiver': github.com/hieu-ht/push-receiver/637393e46344b091f19108bbf02758cc58666765
+  '@hieudevx/push-receiver': 3.1.4
   electron-store: 8.1.0
 
 devDependencies:
@@ -244,6 +244,18 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@hieudevx/push-receiver/3.1.4:
+    resolution: {integrity: sha512-HXMuUx7U0BHW1b9ZKB9UICc6Gip868WWn7JT4ZajaXcMyuYcc9EqbBpIFn+77m3VT339frHHl2v8rM9rC3i6Ug==}
+    engines: {node: '>=14'}
+    dependencies:
+      axios: 0.27.2
+      http_ece: 1.1.0
+      long: 5.2.0
+      protobufjs: 7.1.1
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /@humanwhocodes/config-array/0.10.7:
     resolution: {integrity: sha512-MDl6D6sBsaV452/QSdX+4CXIjZhIcI0PELsxUjk4U828yd58vk3bTIvk/6w5FY+4hIy9sLW0sfrV7K7Kc++j/w==}
@@ -2631,19 +2643,3 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
-
-  github.com/hieu-ht/push-receiver/637393e46344b091f19108bbf02758cc58666765:
-    resolution: {tarball: https://codeload.github.com/hieu-ht/push-receiver/tar.gz/637393e46344b091f19108bbf02758cc58666765}
-    name: '@hieuht/push-receiver'
-    version: 3.1.2
-    engines: {node: '>=14'}
-    prepare: true
-    requiresBuild: true
-    dependencies:
-      axios: 0.27.2
-      http_ece: 1.1.0
-      long: 5.2.0
-      protobufjs: 7.1.1
-    transitivePeerDependencies:
-      - debug
-    dev: false

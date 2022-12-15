@@ -1,4 +1,4 @@
-import PushReceiver from "@hieuht/push-receiver";
+import PushReceiver from "@hieudevx/push-receiver";
 import { ipcMain } from "electron";
 import Store from "electron-store";
 import {

@@ -1,4 +1,4 @@
-# @hieuht/electron-fcm-push-receiver
+# @hieudevx/electron-fcm-push-receiver
 
 A module to bring Web Push support to [Electron](https://github.com/electron/electron) allowing it to receive notifications from Firebase Cloud Messaging (FCM).
 
@@ -33,7 +33,7 @@ import {
   NOTIFICATION_SERVICE_ERROR,
   NOTIFICATION_RECEIVED as ON_NOTIFICATION_RECEIVED,
   TOKEN_UPDATED,
-} from '@hieuht/electron-fcm-push-receiver/src/constants';
+} from '@hieudevx/electron-fcm-push-receiver/src/constants';
 
 // Listen for service successfully started
 ipcRenderer.on(NOTIFICATION_SERVICE_STARTED, (_, token) => // do something);
