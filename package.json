@@ -1,6 +1,6 @@
 {
   "name": "@hieudevx/electron-fcm-push-receiver",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "description": "A module to receive FCM notifications in electron",
   "main": "src/index.js",
   "repository": "https://github.com/hieu-ht/electron-fcm-push-receiver",
